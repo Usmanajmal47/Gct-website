@@ -1,0 +1,469 @@
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+:root {
+    --primary-color: #0d255c;
+    /* Deep Academic Blue */
+    --secondary-color: #f59e0b;
+    /* Golden Amber */
+    --accent-color: #10b981;
+    /* Emerald */
+    --bg-light: #f9fafb;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Merriweather', serif;
+    /* Serif for headings gives a 'University' feel */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+a {
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(13, 37, 92, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85) !important;
+    position: relative;
+    padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #fff !important;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 60%;
+}
+
+/* Hero Section */
+#hero {
+    height: 90vh;
+    min-height: 600px;
+    position: relative;
+    background: url('images\ \(3\).jpg') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(13, 37, 92, 0.9) 0%, rgba(13, 37, 92, 0.7) 100%);
+}
+
+#hero h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+#hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-warning {
+    background-color: var(--secondary-color);
+    border: none;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #d97706;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+/* Buttons spacing for small screens */
+@media (max-width: 768px) {
+    .btn-group-mobile a {
+        margin-bottom: 10px; /* vertical spacing */
+    }
+
+    .btn-group-mobile a:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+/* Section Common */
+.section-padding {
+    padding: 100px 0;
+}
+
+.heading-line {
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 1rem auto 2rem;
+    border-radius: 2px;
+}
+/* About Section Image Responsiveness */
+#about img {
+    width: 100%;         /* container ke hisaab se fit ho */
+    height: auto;        /* aspect ratio maintain rahe */
+    max-height: 450px;   /* optional max height desktop ke liye */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    #about img {
+        max-height: 300px;
+        margin-bottom: 20px; /* text aur image me spacing */
+    }
+}
+
+
+/* Cards (Programs, News, Faculty) */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #fff;
+    box-shadow: var(--card-shadow);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.icon-box-lg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: var(--bg-light);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover .icon-box-lg {
+    background: var(--primary-color);
+    color: #fff;
+}
+.program-card img.card-img-top {
+    width: 100%;
+    height: 220px; /* Set same height for all program images */
+    object-fit: cover; /* Ensure image covers area without stretching */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.program-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Why Choose Us */
+.ls-1 {
+    letter-spacing: 1px;
+}
+
+/* Facilities */
+.facility-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.facility-item:hover .facility-overlay {
+    opacity: 1;
+}
+
+.news-img-wrapper {
+    width: 100%;
+    height: 200px; /* uniform height for all news images */
+    overflow: hidden;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.news-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crop images to fit the container */
+    transition: transform 0.3s ease;
+}
+
+.card:hover .news-img-wrapper img {
+    transform: scale(1.05); /* subtle zoom on hover */
+}
+
+.facility-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Faculty */
+/* Testimonial Images Responsive */
+#testimonialCarousel img {
+    width: 100px;         /* fixed size desktop ke liye */
+    height: 100px;
+    object-fit: cover;    /* image distort nahi hogi */
+    border-radius: 50%;   /* perfect circle */
+    margin: 0 auto;       /* center alignment */
+}
+
+@media (max-width: 768px) {
+    #testimonialCarousel img {
+        width: 80px;      /* chhoti screen ke liye */
+        height: 80px;
+    }
+
+    #testimonialCarousel .col-lg-8 {
+        flex: 0 0 100%;   /* full width container mobile me */
+        max-width: 100%;
+        padding: 0 15px;  /* thoda padding mobile me */
+    }
+}
+/* Default image border */
+.card img {
+    border: 3px solid transparent; /* already a border? adjust */
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+.card img:hover {
+    border-color: #f59e0b;
+}
+
+
+/* Admission Steps */
+.step-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+}
+
+/* Contact Form */
+.form-control {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 4px rgba(13, 37, 92, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: #0d255c;
+    color: rgba(255, 255, 255, 0.7);
+}
+footer h4,
+footer h5 {
+    color: #fff;
+    font-family: var(--font-heading);
+}
+
+.social-links a {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--secondary-color) !important;
+    transform: translateY(-3px);
+}
+
+.hover-white:hover {
+    color: #fff !important;
+    padding-left: 5px;
+    transition: 0.3s;
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay modifiers */
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2rem; /* mobile ke liye aur chhota */
+    }
+
+    .section-padding {
+        padding: 40px 20px; /* mobile me padding reduce karo */
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+}
+img, .card, .program-img-wrapper, .facility-item img {
+    max-width: 100%;
+    height: auto;
+}
+/* Program Card Images */
+.program-img-wrapper {
+    width: 100%;
+    height: 200px; /* fixed height for all images */
+    overflow: hidden;
+    border-radius: 8px; /* optional, for rounded corners */
+}
+
+.program-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* image distort nahi hogi, center se crop hogi */
+    transition: transform 0.3s;
+}
+
+/* Optional: hover zoom effect */
+.program-img-wrapper img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .program-img-wrapper {
+        height: 150px; /* chhoti screens ke liye thoda chhota */
+    }
+}
